@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.homeClockContainer{
+    border: 1px solid green;
+    padding: 10px;
+    background: linear-gradient(white,lightskyblue);
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.buttonGroup{
+    display: flex;
+    justify-content:space-around;
+    padding: 10px;
+}
+
+.timerButtonContainer, .counterButtonContainer{
+    border: 1px solid blue;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 140px;
+    background-color: grey;
+    color: white;
+}
+#timerButton{
+    margin-right: 20px;
+}
+
+@media screen and (max-width:416px) {
+    .buttonGroup{
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    .timerButtonContainer, .counterButtonContainer{
+        margin: 10px;
+    }
+
+}

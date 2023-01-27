@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 20px;
+    /* border: 1px solid black; */
+}
+.timerContainer{
+    background: linear-gradient(white,lightskyblue);
+    border: 1px solid green;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timerHeader{
+    border: 1px solid pink;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.timerClock{
+    border: 1px solid blue;
+    margin: 5px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.timerButton{
+    border: 1px solid green;
+    padding: 10px ;
+    margin: 10px ;
+    display: flex;
+    justify-content: space-around;
+}
+
+#start, #stop, #reset{
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+}
+
+#start{
+    background-color: green;
+}
+#stop{
+    background-color: red;
+}
+#reset{
+    background-color: lightskyblue;
+}

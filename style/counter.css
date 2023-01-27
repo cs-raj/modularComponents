@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* border: 1px solid blue; */
+    margin-left: auto;
+    margin-right: auto;
+}
+.counterContainer{
+    margin: 20px;
+    border: 1px solid black;
+    align-items: center;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+h1{
+    margin: 20px;
+    border: 1px solid green;
+    text-align: center;
+}
+#countValue{
+    border: 1px solid blue;
+    text-align: center;
+    padding: 10px;
+}
+
+.buttonContainer{
+    border: 1px solid pink;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#increment{
+    width: 100px;
+    font-size: 1.5rem;
+}
+
+#decrement{
+    width: 100px;
+    font-size: 1.5rem;
+}
