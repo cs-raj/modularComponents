@@ -1,8 +1,9 @@
 //This will countain the class for creating the counter and the requried css for the same
 
 class Counter{
-    constructor(){
+    constructor(counterValueId){
         this.count = 0;
+        this.counterValueId = counterValueId;
     }
     incrementCounter(){
         this.count = this.count + 1;
@@ -13,7 +14,7 @@ class Counter{
         this.updateCounter();
     }
     updateCounter(){
-        document.getElementById('counterValue').innerText = `count : ${this.count}`;
+        document.getElementById(this.counterValueId).innerText = `count : ${this.count}`;
     }
     render(){
         //Creating the component
@@ -26,7 +27,7 @@ class Counter{
         //Adding class labels and ids
         counterContainer.classList.add('counterContainer');
         counterHeading.classList.add('counterHeading');
-        counterValue.id = 'counterValue';
+        counterValue.id = this.counterValueId;
         incrementButton.id = 'incrementButton';
         decrementButton.id = 'decrementButton';
 
@@ -43,6 +44,7 @@ class Counter{
         counterContainer.appendChild(decrementButton);
 
         incrementButton.onclick = this.incrementCounter.bind(this);
+        decrementButton.onclick = this.decrementCounter.bind(this);
         return counterContainer;
     }
     mount(parentElement){

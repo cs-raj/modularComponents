@@ -1,12 +1,17 @@
 import { Counter } from "./modularCounter/counter.js";
+import { Timer } from "./timer/timer.js";
+import { generateUniqueId } from "./uniqueID.js";
 
-const newCounter = new Counter();
+const newCounter = new Counter(generateUniqueId("newCounter"));
+// console.log(generateUniqueId(newCounter));
 newCounter.mount(document.getElementById('root'));
 
-const newCounter2 = new Counter();
+
+const newCounter2 = new Counter(generateUniqueId("newCounter2"));
 newCounter2.mount(document.getElementById('root'));
 
-
+const newTimer = new Timer();
+newTimer.mount(document.getElementById('root'));
 
 
 // var link = document.createElement('link');
