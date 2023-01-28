@@ -4,6 +4,10 @@ class Counter{
     constructor(counterValueId){
         this.count = 0;
         this.counterValueId = counterValueId;
+        var link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', './style/counter.css');
+        document.head.appendChild(link);
     }
     incrementCounter(){
         this.count = this.count + 1;
@@ -23,26 +27,27 @@ class Counter{
         const counterValue = document.createElement('p');
         const incrementButton = document.createElement('button');
         const decrementButton = document.createElement('button');
-
+        const buttonContainer = document.createElement('div');
         //Adding class labels and ids
         counterContainer.classList.add('counterContainer');
         counterHeading.classList.add('counterHeading');
         counterValue.id = this.counterValueId;
         incrementButton.id = 'incrementButton';
         decrementButton.id = 'decrementButton';
-
+        counterValue.classList.add('counterValue');
+        buttonContainer.classList.add('buttonContainer');
         //Adding the Inner HTMl
         counterHeading.innerText = 'Counter';
-        counterValue.innerText = `count : ${this.count}`;
+        counterValue.innerText = `Count : ${this.count}`;
         incrementButton.innerText = "+";
         decrementButton.innerText = "-";
 
         //Adding components
         counterContainer.appendChild(counterHeading);
         counterContainer.appendChild(counterValue);
-        counterContainer.appendChild(incrementButton);
-        counterContainer.appendChild(decrementButton);
-
+        buttonContainer.appendChild(incrementButton);
+        buttonContainer.appendChild(decrementButton);
+        counterContainer.appendChild(buttonContainer);
         incrementButton.onclick = this.incrementCounter.bind(this);
         decrementButton.onclick = this.decrementCounter.bind(this);
         return counterContainer;

@@ -10,8 +10,10 @@ newCounter.mount(document.getElementById('root'));
 const newCounter2 = new Counter(generateUniqueId("newCounter2"));
 newCounter2.mount(document.getElementById('root'));
 
-const newTimer = new Timer();
+const newTimer = new Timer(generateUniqueId("timerClock"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
 newTimer.mount(document.getElementById('root'));
+const newTimer2 = new Timer(generateUniqueId("timerClock2"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
+newTimer2.mount(document.getElementById('root'));
 
 
 // var link = document.createElement('link');

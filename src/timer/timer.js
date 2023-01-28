@@ -1,36 +1,41 @@
 class Timer{
-    constructor(){
+    constructor(timerClockId,startId, stopId, resetId){
         var head = document.getElementsByTagName('HEAD')[0];
         var link = document.createElement('link');
-        // set the attributes for link element
-        link.rel = 'stylesheet';
-            
+        link.rel = 'stylesheet';   
         link.type = 'text/css';
         link.href = '../style/timer.css';
         head.appendChild(link);
+
         this.second = 0;
         this.minute = 0;
         this.minuteSecondtens = 0;
         this.intervalId = 0;
+        this.timerClockId = timerClockId;
+        this.start = '_'+startId;
+        this.stop = '_'+stopId;
+        this.reset = '_'+resetId;
     }
 
     startTimerFun(){
         this.intervalId = setInterval(this.timerCounter.bind(this),1000);
     }
     stopTimerFun(){
-        document.getElementById('start').addEventListener('click',this.startTimerFun.bind(this),{once : true});
+        document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once : true});
         clearInterval(this.intervalId);
     }
     resetTimerFun(){
+        document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once : true});
         clearInterval(this.intervalId); //Stopping the timer
         //Setting it to zero
         this.second = 0;
         this.minute = 0;
-        const timerClock = document.querySelector('.timerClock');
+        const timerClock = document.querySelector('.'+this.timerClockId);
         timerClock.innerText = `Timer : ${this.minuteSecondtens}${this.minute} : ${this.minuteSecondtens}${this.second}`;
     }
     timerCounter(){
-        const timerClock = document.querySelector('.timerClock');
+        console.log(document.querySelector('.'+this.timerClockId));
+        const timerClock = document.querySelector('.'+this.timerClockId);
         if(this.second<10){
             this.second = this.second + 1;
             if(this.minute>=10){
@@ -76,9 +81,12 @@ class Timer{
             startTimer.id = 'start';
             stopTimer.id = 'stop';
             resetTimer.id = 'reset';
+            startTimer.classList.add(this.start);
+            stopTimer.classList.add(this.stop);
+            resetTimer.classList.add(this.reset);
             timerContainer.classList.add('timerContainer');
             timerHeader.classList.add('timerHeader');
-            timerClock.classList.add('timerClock');
+            timerClock.classList.add(this.timerClockId,'timerClock');
             timerButton.classList.add('timerButton');
 
             //Adding the inner html
