@@ -40,7 +40,6 @@ class Timer{
         }
     }
     timerCounter(){
-        console.log(document.querySelector('.'+this.timerClockId));
         const timerClock = document.querySelector('.'+this.timerClockId);
         if(this.second<10){
             this.second = this.second + 1;
@@ -109,12 +108,16 @@ class Timer{
     }
     mount(parentElement){
         if(parentElement){
-            console.log(parentElement);
-            console.log(this);
-            parentElement.appendChild(this.render());
-            return;
+            if(parentElement.querySelector('.timerContainer')===null){
+                parentElement.appendChild(this.render());
+                return;
+            }
+            else
+            {
+                return;
+            }
         }
-        document.body.appendChild(this.render());
+        document.body.appendChild(this.render);
         return;
     }
 }

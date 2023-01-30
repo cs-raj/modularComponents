@@ -10,23 +10,21 @@ class TimerCounterApp{
         link.setAttribute('href', './style/style.css');
         document.head.appendChild(link);
 
-        //Adding the Root Element
-        this.root = document.createElement('div');
-        this.root.classList.add('root');
+        // //Adding the Root Element
+        // this.root = document.createElement('div');
+        // this.root.classList.add('root');
     }
     
     timerCheckFun (){
         let counterCheck = document.querySelector('.counterContainer');
         let timerCheck = document.querySelector('.timerContainer');
-        let rootCount = document.querySelector('.root');
-        console.log(counterCheck);
         if(counterCheck!==null)
         {
-            document.body.removeChild(rootCount);
             root.removeChild(counterCheck);
         }
         if(timerCheck===null)
         {
+
             const newTimer = new Timer(generateUniqueId("timerClock"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
             newTimer.mount(document.getElementById('root'));
         }
@@ -35,8 +33,6 @@ class TimerCounterApp{
     counterCheckFun (){
         let timerCheck = document.querySelector('.timerContainer');
         let counterCheck = document.querySelector('.counterContainer');
-        let rootCount = document.querySelector('.root');
-        console.log(document.querySelector('.root').childElementCount);
         if(timerCheck!==null)
         {
             //document.body.removeChild(rootCount);
@@ -44,7 +40,9 @@ class TimerCounterApp{
         }
         if(counterCheck===null)
         {
-            root.appendChild(createCounterFromScratch());
+            const newCounter = new Counter(generateUniqueId("newCounter"));
+
+            newCounter.mount(document.getElementById('root'));
         }
     }
     render(){
@@ -80,10 +78,7 @@ class TimerCounterApp{
         homeForm.action = '';
         homeForm.method = "GET";
         homeClockContainer.classList.add('homeClockContainer');
-        //root.classList.add('root');
 
-        //Adding the elements to the body
-        document.body.appendChild(root);
         homeClockContainer.appendChild(homeForm);
         homeForm.appendChild(buttonGroup);
 
@@ -103,29 +98,14 @@ class TimerCounterApp{
         if(el){
             el.appendChild(this.render());
         }
-        document.body.appendChild(this.render());
+        //document.body.appendChild(this.render());
     }
 }
 
 const newTCA = new TimerCounterApp();
 newTCA.mount(document.getElementById('root'));
 
-const newCounter = new Counter(generateUniqueId("newCounter"));
-// console.log(generateUniqueId(newCounter));
-newCounter.mount(document.getElementById('root'));
-
-
-const newCounter2 = new Counter(generateUniqueId("newCounter2"));
-newCounter2.mount(document.getElementById('root'));
-
-
-const newTimer2 = new Timer(generateUniqueId("timerClock2"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
-newTimer2.mount(document.getElementById('root'));
-
-
-
-
-
-
-// console.log(homeClock());
-// root.appendChild(homeClock());
+// const newTimer22 = new Timer(generateUniqueId("timerClock"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
+// newTimer22.mount(document.getElementById('root'));
+// const newTimer2 = new Timer(generateUniqueId("timerClock"),generateUniqueId("start"),generateUniqueId('stop'),generateUniqueId('reset'));
+// newTimer2.mount(document.getElementById('root'));

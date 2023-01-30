@@ -62,7 +62,6 @@ class Counter{
             }
             else
             {
-                console.log("#######Found Duplicate");
                 return;
             }
         }
