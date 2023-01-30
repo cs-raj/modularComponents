@@ -6,32 +6,38 @@ class Timer{
         link.type = 'text/css';
         link.href = '../style/timer.css';
         head.appendChild(link);
-
         this.second = 0;
         this.minute = 0;
         this.minuteSecondtens = 0;
         this.intervalId = 0;
-        this.timerClockId = timerClockId;
+        this.timerClockId = "_"+timerClockId;
         this.start = '_'+startId;
         this.stop = '_'+stopId;
         this.reset = '_'+resetId;
+        this.checkStartAddEvent = 0;
     }
 
     startTimerFun(){
         this.intervalId = setInterval(this.timerCounter.bind(this),1000);
+        document.querySelector('.'+this.start).innerText = 'Stop';
+        document.querySelector('.'+this.start).addEventListener('click',this.stopTimerFun.bind(this));
     }
     stopTimerFun(){
-        document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once : true});
         clearInterval(this.intervalId);
+        document.querySelector('.'+this.start).innerText = 'Start';
+        document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once:true});       
     }
     resetTimerFun(){
-        document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once : true});
-        clearInterval(this.intervalId); //Stopping the timer
-        //Setting it to zero
+        clearInterval(this.intervalId);
         this.second = 0;
         this.minute = 0;
         const timerClock = document.querySelector('.'+this.timerClockId);
         timerClock.innerText = `Timer : ${this.minuteSecondtens}${this.minute} : ${this.minuteSecondtens}${this.second}`;
+        if(document.querySelector('.'+this.start).innerText==='Stop')
+        {
+            document.querySelector('.'+this.start).innerText = 'Start';
+            document.querySelector('.'+this.start).addEventListener('click',this.startTimerFun.bind(this),{once:true});       
+        }
     }
     timerCounter(){
         console.log(document.querySelector('.'+this.timerClockId));
@@ -73,16 +79,13 @@ class Timer{
             const timerClock = document.createElement('div');
             const timerButton = document.createElement('div');
             const startTimer = document.createElement('button');
-            const stopTimer = document.createElement('button');
             const resetTimer = document.createElement('button');
 
             //Adding class and id to element
             
             startTimer.id = 'start';
-            stopTimer.id = 'stop';
             resetTimer.id = 'reset';
             startTimer.classList.add(this.start);
-            stopTimer.classList.add(this.stop);
             resetTimer.classList.add(this.reset);
             timerContainer.classList.add('timerContainer');
             timerHeader.classList.add('timerHeader');
@@ -92,7 +95,6 @@ class Timer{
             //Adding the inner html
             timerHeader.innerText = "Timer MM : SS";
             startTimer.innerText = "Start";
-            stopTimer.innerText = "Stop";
             resetTimer.innerText = "Reset";
             timerClock.innerText = `Timer : ${this.minuteSecondtens}${this.minute} : ${this.minuteSecondtens}${this.second}`;
 
@@ -100,12 +102,9 @@ class Timer{
             timerContainer.appendChild(timerClock);
             timerContainer.appendChild(timerButton);
             timerButton.appendChild(startTimer);
-            timerButton.appendChild(stopTimer);
             timerButton.appendChild(resetTimer);
             startTimer.addEventListener('click',this.startTimerFun.bind(this),{once : true});
-            //startTimer.onclick = this.startTimerFun.bind(this);
-            stopTimer.onclick = this.stopTimerFun.bind(this);
-            resetTimer.onclick = this.resetTimerFun.bind(this);
+            resetTimer.addEventListener('click',this.resetTimerFun.bind(this));
             return timerContainer;
     }
     mount(parentElement){
@@ -115,40 +114,8 @@ class Timer{
             parentElement.appendChild(this.render());
             return;
         }
-        document.body.appendChild(this.render);
+        document.body.appendChild(this.render());
         return;
     }
 }
-// var head = document.getElementsByTagName('HEAD')[0];
-// var link = document.createElement('link');
-// // set the attributes for link element
-// link.rel = 'stylesheet';
-     
-// link.type = 'text/css';
-// link.href = '../style/timer.css';
-// head.appendChild(link);
-
-
-// let second = 0;
-// let minute = 0;
-// let minuteSecondtens = 0;
-// let intervalId = 0; // This will store setInterval Id used to stop the timer
-// //Getting the id of the element to be updated
-
-// //Start timer function
-// function tc(){
-   
-// }
-
-// //Resetting the Timer
-// const resetTimerFun = () =>{
-    
-// }
- 
-// const timer = () =>{
-   
-// }
-
-// //Calling to start
-// //timer();
 export {Timer};

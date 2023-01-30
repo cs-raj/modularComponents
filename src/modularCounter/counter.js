@@ -53,11 +53,18 @@ class Counter{
         return counterContainer;
     }
     mount(parentElement){
+
+        //To avoid adding duplicate counter
         if(parentElement){
-            console.log(parentElement);
-            console.log(this);
-            parentElement.appendChild(this.render());
-            return;
+            if(parentElement.querySelector('.counterContainer')===null){
+                parentElement.appendChild(this.render());
+                return;
+            }
+            else
+            {
+                console.log("#######Found Duplicate");
+                return;
+            }
         }
         document.body.appendChild(this.render);
         return;
