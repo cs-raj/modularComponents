@@ -1,11 +1,9 @@
 class Timer{
     constructor(timerClockId,startId, stopId, resetId){
-        var head = document.getElementsByTagName('HEAD')[0];
         var link = document.createElement('link');
-        link.rel = 'stylesheet';   
-        link.type = 'text/css';
-        link.href = './style/timer.css';
-        head.appendChild(link);
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', './style/timer.css');
+        document.head.appendChild(link);
         this.second = 0;
         this.minute = 0;
         this.minuteSecondtens = 0;
