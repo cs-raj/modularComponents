@@ -1,5 +1,8 @@
 *Title*: DOM Manipulation: Counter and Timer.
 
+## Link for the Website 
+[https://cs-raj.github.io/modularComponents/](https://cs-raj.github.io/modularComponents/)
+
 *Description*: Creating a timer and counter in a single page using DOM manipulation.
 The project use HTML, CSS and JavaScript. 
 * The application has two buttons timer and counter depending on which button is clicked either of which is shown.
